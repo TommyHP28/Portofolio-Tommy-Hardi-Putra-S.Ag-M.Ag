@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tommy Hardi Putra, S.Ag., M.Ag. | Academic Portfolio & Lecturer Dossier</title>
+    
+    <!-- Google Fonts: Cormorant Garamond (Editorial Serif) & Plus Jakarta Sans (Clean Modern Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            950: '#070E1A',
+                            900: '#0B172A',
+                            800: '#132440',
+                            700: '#1D3557',
+                            600: '#2B4C7E',
+                        },
+                        ivory: {
+                            50: '#FDFCFA',
+                            100: '#FAF7F0',
+                            200: '#F2ECE1',
+                            300: '#E5DCCB',
+                        },
+                        gold: {
+                            300: '#E2C785',
+                            400: '#D4AF37',
+                            500: '#B89225',
+                            600: '#967419',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'editorial': '0 20px 50px -15px rgba(11, 23, 42, 0.08)',
+                        'gold-glow': '0 10px 30px -10px rgba(184, 146, 37, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF7F0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #132440;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B89225;
+        }
+
+        /* Subtle Architectural Grid Pattern */
+        .bg-academic-pattern {
+            background-image: radial-gradient(rgba(184, 146, 37, 0.14) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+
+        /* Smooth Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Editorial Underline Hover */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1.5px;
+            bottom: -4px;
+            left: 0;
+            background-color: #B89225;
+            transition: width 0.35s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Print / PDF Export Styling */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+                color: #0B172A !important;
+            }
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            section {
+                page-break-inside: avoid;
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-ivory-50 text-navy-900 font-sans antialiased selection:bg-gold-500 selection:text-white">
+
+    <!-- Top Academic Status Ribbon -->
+    <div class="bg-navy-950 text-ivory-100 text-xs py-2.5 px-4 border-b border-navy-800 no-print">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-2.5 tracking-wide">
+                <span class="inline-block w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+                <span class="font-medium text-gold-300 uppercase tracking-widest text-[11px]">Lecturer Application Dossier</span>
+                <span class="text-navy-600 hidden sm:inline">|</span>
+                <span class="text-ivory-200 hidden sm:inline">Open for Academic Engagements & Faculty Appointments</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="toggleLanguage()" id="langToggleBtn" class="flex items-center gap-1.5 text-ivory-200 hover:text-gold-300 transition-colors font-medium">
+                    <i data-lucide="globe" class="w-3.5 h-3.5 text-gold-400"></i>
+                    <span id="langLabel">Bahasa Indonesia</span>
+                </button>
+                <span class="text-navy-700">|</span>
+                <button onclick="window.print()" class="flex items-center gap-1.5 text-ivory-200 hover:text-gold-300 transition-colors font-medium">
+                    <i data-lucide="printer" class="w-3.5 h-3.5 text-gold-400"></i>
+                    <span data-i18n="printBtn">Print Dossier</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-ivory-50/90 backdrop-blur-md border-b border-ivory-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+            <!-- Monogram & Name -->
+            <a href="#top" class="flex items-center gap-3.5 group">
+                <div class="w-10 h-10 bg-navy-900 text-gold-400 border border-gold-500/40 flex items-center justify-center font-serif text-xl font-bold tracking-wider group-hover:bg-navy-800 transition-colors">
+                    THP
+                </div>
+                <div>
+                    <p class="font-serif text-lg font-bold text-navy-900 leading-none tracking-tight">Tommy Hardi Putra, S.Ag., M.Ag.</p>
+                    <p class="text-[11px] uppercase tracking-[0.18em] text-gold-600 font-semibold mt-1">Islamic Theology & Philosophy</p>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center gap-7 text-[13px] font-medium text-navy-800 tracking-wide">
+                <a href="#profile" class="nav-link hover:text-navy-950" data-i18n="navProfile">Profile</a>
+                <a href="#education" class="nav-link hover:text-navy-950" data-i18n="navEducation">Education</a>
+                <a href="#research-interests" class="nav-link hover:text-navy-950" data-i18n="navInterests">Research Focus</a>
+                <a href="#publications" class="nav-link hover:text-navy-950" data-i18n="navPublications">Research & Works</a>
+                <a href="#teaching" class="nav-link hover:text-navy-950" data-i18n="navTeaching">Teaching Philosophy</a>
+                <a href="#experience" class="nav-link hover:text-navy-950" data-i18n="navExperience">Experience</a>
+                <a href="#competencies" class="nav-link hover:text-navy-950" data-i18n="navSkills">Competencies</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="flex items-center gap-3">
+                <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-navy-900 hover:bg-navy-800 text-ivory-50 text-xs uppercase tracking-widest font-semibold px-5 py-3 transition-all shadow-sm hover:shadow-gold-glow border border-navy-900">
+                    <span data-i18n="navContact">Academic Inquiry</span>
+                    <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-gold-400"></i>
+                </a>
+                <!-- Mobile Menu Toggle -->
+                <button id="mobileMenuBtn" class="lg:hidden p-2 text-navy-900 hover:bg-ivory-200 rounded-md" aria-label="Toggle Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-ivory-100 border-b border-ivory-300 px-6 py-6 space-y-4">
+            <div class="grid grid-cols-2 gap-3 text-sm font-medium text-navy-900">
+                <a href="#profile" class="py-1.5 hover:text-gold-600" data-i18n="navProfile">Profile</a>
+                <a href="#education" class="py-1.5 hover:text-gold-600" data-i18n="navEducation">Education</a>
+                <a href="#research-interests" class="py-1.5 hover:text-gold-600" data-i18n="navInterests">Research Focus</a>
+                <a href="#publications" class="py-1.5 hover:text-gold-600" data-i18n="navPublications">Research & Works</a>
+                <a href="#teaching" class="py-1.5 hover:text-gold-600" data-i18n="navTeaching">Teaching Philosophy</a>
+                <a href="#experience" class="py-1.5 hover:text-gold-600" data-i18n="navExperience">Experience</a>
+                <a href="#competencies" class="py-1.5 hover:text-gold-600" data-i18n="navSkills">Competencies</a>
+                <a href="#contact" class="py-1.5 text-gold-600 font-semibold" data-i18n="navContact">Academic Inquiry</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. HERO SECTION -->
+    <section id="top" class="relative overflow-hidden bg-ivory-50 bg-academic-pattern pt-14 pb-24 lg:pt-24 lg:pb-32 border-b border-ivory-200">
+        <!-- Decorative Corner Architectural Lines -->
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-ivory-200/40 to-transparent pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                
+                <!-- Left Editorial Column (7 Cols) -->
+                <div class="lg:col-span-7 space-y-8">
+                    <!-- Institutional Badge -->
+                    <div class="inline-flex items-center gap-3 px-4 py-2 bg-white border border-ivory-300 shadow-sm">
+                        <span class="text-gold-500 text-sm">✦</span>
+                        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-navy-800" data-i18n="heroBadge">
+                            Master of Islamic Theology and Philosophy
+                        </span>
+                    </div>
+
+                    <!-- Main Title & Academic Degree -->
+                    <div class="space-y-4">
+                        <p class="font-serif italic text-xl sm:text-2xl text-gold-600 font-medium" data-i18n="heroSalutation">
+                            Curriculum Vitae & Academic Portfolio
+                        </p>
+                        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-navy-950 leading-[1.12] tracking-tight">
+                            Tommy Hardi Putra, <span class="text-gold-600 font-semibold">S.Ag., M.Ag.</span>
+                        </h1>
+                        <p class="text-base sm:text-lg text-navy-700 font-medium tracking-wide pt-1">
+                            <span data-i18n="heroRole">Scholar in Aqidah & Islamic Philosophy • Academic Researcher • Digital Humanities Educator</span>
+                        </p>
+                    </div>
+
+                    <!-- Tagline Quote -->
+                    <blockquote class="border-l-2 border-gold-500 pl-6 py-1 my-6">
+                        <p class="font-serif text-xl sm:text-2xl text-navy-900 italic leading-relaxed" data-i18n="heroTagline">
+                            “Dedicated to the advancement of research, education, and Islamic thought.”
+                        </p>
+                    </blockquote>
+
+                    <!-- Key Academic Pillars -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                        <div class="bg-white/90 border border-ivory-200 p-4 shadow-sm">
+                            <div class="flex items-center gap-2 text-gold-600 mb-1.5">
+                                <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+                                <span class="text-[11px] font-bold uppercase tracking-widest text-navy-900" data-i18n="pillar1Title">Academic Credential</span>
+                            </div>
+                            <p class="text-xs text-navy-700 leading-relaxed" data-i18n="pillar1Desc">Master of Aqidah & Islamic Philosophy (M.Ag.)</p>
+                        </div>
+                        <div class="bg-white/90 border border-ivory-200 p-4 shadow-sm">
+                            <div class="flex items-center gap-2 text-gold-600 mb-1.5">
+                                <i data-lucide="book-open-check" class="w-4 h-4"></i>
+                                <span class="text-[11px] font-bold uppercase tracking-widest text-navy-900" data-i18n="pillar2Title">Core Mission</span>
+                            </div>
+                            <p class="text-xs text-navy-700 leading-relaxed" data-i18n="pillar2Desc">Advancing Research, Education & Islamic Thought</p>
+                        </div>
+                        <div class="bg-white/90 border border-ivory-200 p-4 shadow-sm">
+                            <div class="flex items-center gap-2 text-gold-600 mb-1.5">
+                                <i data-lucide="landmark" class="w-4 h-4"></i>
+                                <span class="text-[11px] font-bold uppercase tracking-widest text-navy-900" data-i18n="pillar3Title">Availability</span>
+                            </div>
+                            <p class="text-xs text-navy-700 leading-relaxed" data-i18n="pillar3Desc">Open for Academic Engagements & Lecturing</p>
+                        </div>
+                    </div>
+
+                    <!-- Primary Action Buttons -->
+                    <div class="flex flex-wrap items-center gap-4 pt-4 no-print">
+                        <a href="#profile" class="bg-navy-900 hover:bg-navy-800 text-white px-7 py-3.5 text-xs uppercase tracking-[0.18em] font-semibold transition-all flex items-center gap-2.5 shadow-editorial">
+                            <span data-i18n="heroBtnExplore">Explore Academic Profile</span>
+                            <i data-lucide="arrow-down" class="w-4 h-4 text-gold-400"></i>
+                        </a>
+                        <a href="#contact" class="bg-white hover:bg-ivory-100 text-navy-900 border border-navy-900/20 px-7 py-3.5 text-xs uppercase tracking-[0.18em] font-semibold transition-all flex items-center gap-2.5">
+                            <i data-lucide="mail" class="w-4 h-4 text-gold-600"></i>
+                            <span data-i18n="heroBtnContact">Contact & Appointment</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Large Empty Profile Photo Placeholder (5 Cols) -->
+                <div class="lg:col-span-5 flex justify-center lg:justify-end">
+                    <div class="relative w-full max-w-[400px]">
+                        <!-- Architectural Gold & Navy Backdrop Frame -->
+                        <div class="absolute -inset-3 border border-gold-500/40 translate-x-3 translate-y-3 pointer-events-none"></div>
+                        <div class="absolute -inset-3 border border-navy-900/15 -translate-x-2 -translate-y-2 pointer-events-none"></div>
+                        
+                        <!-- Interactive Empty Portrait Placeholder Box -->
+                        <div id="photoPlaceholderContainer" class="relative bg-white border-2 border-dashed border-navy-800/30 hover:border-gold-500 transition-all duration-300 aspect-[3/4] w-full flex flex-col items-center justify-center p-8 text-center shadow-editorial group overflow-hidden">
+                            
+                            <!-- Uploaded Image Preview (Hidden by default until user adds their photo) -->
+                            <img id="uploadedPortraitPreview" src="" alt="Tommy Hardi Putra, M.Ag." class="hidden absolute inset-0 w-full h-full object-cover object-top z-10" />
+
+                            <!-- Empty Placeholder State -->
+                            <div id="emptyPlaceholderUI" class="flex flex-col items-center justify-center space-y-5 z-0">
+                                <!-- Subtle Academic Portrait Frame Icon -->
+                                <div class="w-20 h-20 rounded-full bg-ivory-100 border border-ivory-300 flex items-center justify-center text-navy-700 group-hover:scale-105 group-hover:border-gold-400 transition-all">
+                                    <i data-lucide="user-square-2" class="w-9 h-9 stroke-[1.25] text-navy-800"></i>
+                                </div>
+                                
+                                <div class="space-y-2">
+                                    <span class="inline-block text-[10px] font-bold uppercase tracking-[0.22em] text-gold-600 bg-ivory-100 px-3 py-1 border border-ivory-200">
+                                        Academic Portrait Area
+                                    </span>
+                                    <h3 class="font-serif text-xl font-semibold text-navy-900" data-i18n="photoPlaceholderTitle">
+                                        Official Lecturer Portrait Placeholder
+                                    </h3>
+                                    <p class="text-xs text-navy-600 max-w-[240px] mx-auto leading-relaxed" data-i18n="photoPlaceholderDesc">
+                                        Recommended aspect ratio 3:4 (Formal Academic Attire). Click below to preview your photo directly in this frame.
+                                    </p>
+                                </div>
+
+                                <!-- Interactive Upload Trigger for User Convenience -->
+                                <label for="portraitFileInput" class="no-print cursor-pointer inline-flex items-center gap-2 bg-navy-900 hover:bg-navy-800 text-ivory-50 text-[11px] uppercase tracking-widest font-semibold px-4 py-2.5 transition-colors">
+                                    <i data-lucide="upload" class="w-3.5 h-3.5 text-gold-400"></i>
+                                    <span data-i18n="photoUploadBtn">Insert Profile Photo</span>
+                                </label>
+                                <input type="file" id="portraitFileInput" accept="image/*" class="hidden" onchange="handlePortraitUpload(event)" />
+                            </div>
+
+                            <!-- Replace/Remove Photo Overlay Button (Appears only after user uploads a photo) -->
+                            <div id="photoActionOverlay" class="hidden no-print absolute bottom-4 inset-x-4 z-20 flex justify-center gap-2">
+                                <label for="portraitFileInput" class="cursor-pointer bg-navy-950/90 hover:bg-navy-900 text-white text-[11px] uppercase tracking-wider px-3.5 py-2 backdrop-blur-sm border border-gold-400/40 flex items-center gap-1.5 shadow-lg">
+                                    <i data-lucide="refresh-cw" class="w-3 h-3 text-gold-400"></i>
+                                    <span>Change Photo</span>
+                                </label>
+                                <button onclick="resetPortraitPhoto()" class="bg-white/95 hover:bg-ivory-100 text-navy-950 text-[11px] uppercase tracking-wider px-3 py-2 backdrop-blur-sm border border-navy-900/20 shadow-lg">
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Caption Plate Below Frame -->
+                        <div class="mt-4 bg-navy-900 text-ivory-50 px-5 py-3.5 flex items-center justify-between border-t-2 border-gold-500">
+                            <div>
+                                <p class="font-serif text-base font-semibold tracking-wide">Tommy Hardi Putra, S.Ag., M.Ag.</p>
+                                <p class="text-[11px] text-ivory-300 tracking-wider uppercase">West Sumatra, Indonesia</p>
+                            </div>
+                            <span class="text-gold-400 font-serif italic text-sm">S.Ag., M.Ag.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. PROFESSIONAL PROFILE & EDUCATIONAL PHILOSOPHY -->
+    <section id="profile" class="py-24 lg:py-32 bg-white border-b border-ivory-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 reveal">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                
+                <!-- Section Header Column (4 Cols) -->
+                <div class="lg:col-span-4 space-y-4 lg:sticky lg:top-28">
+                    <div class="flex items-center gap-3">
+                        <span class="text-gold-600 font-serif italic text-lg">01.</span>
+                        <span class="h-[1px] w-10 bg-gold-500"></span>
+                        <span class="text-xs font-bold uppercase tracking-[0.2em] text-navy-600" data-i18n="sec1Label">Academic Identity</span>
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navy-950 leading-tight" data-i18n="sec1Title">
+                        Professional Profile & Educational Philosophy
+                    </h2>
+                    <p class="text-sm text-navy-600 leading-relaxed pt-2" data-i18n="sec1Subtitle">
+                        Synthesizing classical Islamic theological and philosophical inquiry with contemporary analytical methodologies and digital dissemination.
+                    </p>
+                </div>
+
+                <!-- Narrative & Core Philosophy Column (8 Cols) -->
+                <div class="lg:col-span-8 space-y-8">
+                    <div class="prose max-w-none text-navy-800 space-y-5 text-base sm:text-[17px] leading-[1.85]">
+                        <p data-i18n="profilePara1">
+                            I am an academic researcher and postgraduate scholar holding a <strong class="font-semibold text-navy-950">Master of Aqidah and Islamic Philosophy (M.Ag.)</strong> from Universitas Islam Negeri Sjech M. Djamil Djambek Bukittinggi, built upon an undergraduate foundation in <strong class="font-semibold text-navy-950">Hadith Studies (S.Ag.)</strong>. My intellectual work is centered on rigorous analytical inquiry within Islamic theology, philosophical thought, and the classical textual tradition.
+                        </p>
+                        <p data-i18n="profilePara2">
+                            Beyond traditional academic research, I specialize in bridging complex philosophical and psychological concepts with structured, accessible educational storytelling. Through research-driven scriptwriting, digital content architecture, and the development of interactive web-based research utilities, I strive to translate intricate intellectual discourse into formats that engage contemporary learners without sacrificing conceptual depth.
+                        </p>
+                    </div>
+
+                    <!-- Educational Philosophy Highlight Box -->
+                    <div class="bg-ivory-100 border border-ivory-300 p-8 sm:p-10 relative">
+                        <div class="absolute top-0 left-0 w-1.5 h-full bg-navy-900"></div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-navy-900 text-gold-400 flex items-center justify-center shrink-0 mt-1">
+                                <i data-lucide="compass" class="w-5 h-5"></i>
+                            </div>
+                            <div class="space-y-3">
+                                <h3 class="font-serif text-2xl font-bold text-navy-950" data-i18n="eduPhilTitle">
+                                    Core Educational Philosophy
+                                </h3>
+                                <p class="text-sm sm:text-base text-navy-800 leading-relaxed" data-i18n="eduPhilDesc">
+                                    Education in Islamic Theology and Philosophy must cultivate critical reasoning, intellectual integrity, and reflective depth. Guided by a philosophical commitment to analytical clarity, I view higher education not merely as the transmission of doctrine, but as an active dialogical process—equipping students to examine classical Islamic heritage critically and articulate its relevance to modern ethical, psychological, and societal questions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Institutional Attributes -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+                        <div class="border-t border-ivory-300 pt-4">
+                            <p class="text-xs uppercase tracking-widest text-gold-600 font-bold mb-1" data-i18n="attr1Label">Disciplinary Foundation</p>
+                            <p class="font-serif text-lg font-semibold text-navy-950" data-i18n="attr1Val">Aqidah, Islamic Philosophy & Hadith Sciences</p>
+                        </div>
+                        <div class="border-t border-ivory-300 pt-4">
+                            <p class="text-xs uppercase tracking-widest text-gold-600 font-bold mb-1" data-i18n="attr2Label">Methodological Approach</p>
+                            <p class="font-serif text-lg font-semibold text-navy-950" data-i18n="attr2Val">Analytical Philosophy & Digital Knowledge Dissemination</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ACADEMIC BACKGROUND -->
+    <section id="education" class="py-24 lg:py-32 bg-ivory-50 border-b border-ivory-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 reveal">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+                
+                <!-- Header (4 Cols) -->
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-gold-600 font-serif italic text-lg">02.</span>
+                        <span class="h-[1px] w-10 bg-gold-500"></span>
+                        <span class="text-xs font-bold uppercase tracking-[0.2em] text-navy-600" data-i18n="sec2Label">Credentials</span>
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navy-950 leading-tight" data-i18n="sec2Title">
+                        Academic Background
+                    </h2>
+                    <p class="text-sm text-navy-600 leading-relaxed pt-2" data-i18n="sec2Subtitle">
+                        Formal higher education degrees in Islamic religious sciences, theology, and philosophical inquiry.
+                    </p>
+                </div>
+
+                <!-- Timeline Cards (8 Cols) -->
+                <div class="lg:col-span-8 space-y-8">
+                    
+                    <!-- Master's Degree -->
+                    <div class="bg-white border border-ivory-300 p-8 sm:p-10 shadow-editorial relative group hover:border-gold-500 transition-colors">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-5 border-b border-ivory-200">
+                            <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-gold-600">
+                                <i data-lucide="award" class="w-4 h-4"></i>
+                                <span data-i18n="edu1Level">Postgraduate Degree (Master’s)</span>
+                            </span>
+                            <span class="text-xs font-semibold uppercase tracking-widest bg-navy-900 text-ivory-50 px-3.5 py-1.5">
+                                September 2024 – August 2026
+                            </span>
+                        </div>
+                        
+                        <div class="pt-6 space-y-3">
+                            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-navy-950">
+                                Master of Aqidah and Islamic Philosophy (M.Ag.)
+                            </h3>
+                            <p class="text-base font-semibold text-navy-700 flex items-center gap-2">
+                                <i data-lucide="building-2" class="w-4 h-4 text-gold-600 shrink-0"></i>
+                                <span>Universitas Islam Negeri Sjech M. Djamil Djambek Bukittinggi</span>
+                            </p>
+                            <p class="text-sm text-navy-600 leading-relaxed pt-2" data-i18n="edu1Desc">
+                                Advanced postgraduate specialization in Islamic theological discourse (Aqidah), classical and contemporary Islamic philosophy, metaphysical inquiry, and analytical reasoning.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Bachelor's Degree -->
+                    <div class="bg-white border border-ivory-300 p-8 sm:p-10 shadow-editorial relative group hover:border-gold-500 transition-colors">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-5 border-b border-ivory-200">
+                            <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-gold-600">
+                                <i data-lucide="book-open" class="w-4 h-4"></i>
+                                <span data-i18n="edu2Level">Undergraduate Degree (Bachelor’s)</span>
+                            </span>
+                            <span class="text-xs font-semibold uppercase tracking-widest bg-ivory-200 text-navy-900 px-3.5 py-1.5">
+                                August 2019 – September 2023
+                            </span>
+                        </div>
+                        
+                        <div class="pt-6 space-y-3">
+                            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-navy-950">
+                                Sarjana Agama (S.Ag.) in Ilmu Hadis (Hadith Sciences)
+                            </h3>
+                            <p class="text-base font-semibold text-navy-700 flex items-center gap-2">
+                                <i data-lucide="building-2" class="w-4 h-4 text-gold-600 shrink-0"></i>
+                                <span>UIN Sjech M. Djamil Djambek Bukittinggi</span>
+                            </p>
+                            <p class="text-sm text-navy-600 leading-relaxed pt-2" data-i18n="edu2Desc">
+                                Comprehensive foundation in classical Islamic textual criticism, Hadith authentication methodologies (Ulumul Hadis), primary Arabic source analysis, and foundational Islamic sciences.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. RESEARCH INTERESTS -->
+    <section id="research-interests" class="py-24 lg:py-32 bg-navy-950 text-ivory-50 border-b border-navy-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 reveal">
+            
+            <!-- Section Header -->
+            <div class="max-w-3xl space-y-4 mb-16">
+                <div class="flex items-center gap-3">
+                    <span class="text-gold-400 font-serif italic text-lg">03.</span>
+                    <span class="h-[1px] w-10 bg-gold-400"></span>
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-gold-300" data-i18n="sec3Label">Fields of Inquiry</span>
+                </div>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight" data-i18n="sec3Title">
+                    Research Interests & Disciplinary Domains
+                </h2>
+                <p class="text-sm sm:text-base text-ivory-200/80 leading-relaxed" data-i18n="sec3Subtitle">
+                    Interdisciplinary research trajectories rooted in Islamic philosophical traditions, classical textual scholarship, and modern analytical communication.
+                </p>
+            </div>
+
+            <!-- 4 Research Pillars Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="bg-navy-900/90 border border-navy-800 hover:border-gold-500/60 p-8 sm:p-10 transition-all group">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 bg-navy-950 border border-gold-500/40 flex items-center justify-center text-gold-400">
+                            <i data-lucide="scroll-text" class="w-6 h-6"></i>
+                        </div>
+                        <span class="font-serif italic text-navy-600 group-hover:text-gold-400 transition-colors text-2xl">I</span>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-white mb-3" data-i18n="res1Title">
+                        Islamic Theology (Aqidah) & Classical Kalam
+                    </h3>
+                    <p class="text-sm text-ivory-200/80 leading-relaxed" data-i18n="res1Desc">
+                        Examination of foundational theological doctrines, epistemology in Islamic thought, and the systematic articulation of Aqidah in response to historical and contemporary intellectual challenges.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-navy-900/90 border border-navy-800 hover:border-gold-500/60 p-8 sm:p-10 transition-all group">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 bg-navy-950 border border-gold-500/40 flex items-center justify-center text-gold-400">
+                            <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                        </div>
+                        <span class="font-serif italic text-navy-600 group-hover:text-gold-400 transition-colors text-2xl">II</span>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-white mb-3" data-i18n="res2Title">
+                        Islamic Philosophy & Philosophical Psychology
+                    </h3>
+                    <p class="text-sm text-ivory-200/80 leading-relaxed" data-i18n="res2Desc">
+                        Analytical exploration of Islamic philosophical concepts, ethics, and human psychology—investigating how philosophical reasoning illuminates cognition, behavior, and existential meaning.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-navy-900/90 border border-navy-800 hover:border-gold-500/60 p-8 sm:p-10 transition-all group">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 bg-navy-950 border border-gold-500/40 flex items-center justify-center text-gold-400">
+                            <i data-lucide="book-marked" class="w-6 h-6"></i>
+                        </div>
+                        <span class="font-serif italic text-navy-600 group-hover:text-gold-400 transition-colors text-2xl">III</span>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-white mb-3" data-i18n="res3Title">
+                        Hadith Studies & Textual Methodology
+                    </h3>
+                    <p class="text-sm text-ivory-200/80 leading-relaxed" data-i18n="res3Desc">
+                        Critical engagement with Prophetic traditions (Ilmu Hadis), historiographical verification, and hermeneutical frameworks connecting classical religious texts with contemporary discourse.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-navy-900/90 border border-navy-800 hover:border-gold-500/60 p-8 sm:p-10 transition-all group">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="w-12 h-12 bg-navy-950 border border-gold-500/40 flex items-center justify-center text-gold-400">
+                            <i data-lucide="laptop-2" class="w-6 h-6"></i>
+                        </div>
+                        <span class="font-serif italic text-navy-600 group-hover:text-gold-400 transition-colors text-2xl">IV</span>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-white mb-3" data-i18n="res4Title">
+                        Digital Humanities & Applied Research Tools
+                    </h3>
+                    <p class="text-sm text-ivory-200/80 leading-relaxed" data-i18n="res4Desc">
+                        Developing browser-based research utilities, structured narrative frameworks, and educational digital media that bridge academic scholarship with public intellectual literacy.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. RESEARCH, SCHOLARLY WORKS & DIGITAL RESEARCH ARTIFACTS -->
+    <section id="publications" class="py-24 lg:py-32 bg-white border-b border-ivory-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 reveal">
+            
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16">
+                <div class="space-y-4 max-w-2xl">
+                    <div class="flex items-center gap-3">
+                        <span class="text-gold-600 font-serif italic text-lg">04.</span>
+                        <span class="h-[1px] w-10 bg-gold-500"></span>
+                        <span class="text-xs font-bold uppercase tracking-[0.2em] text-navy-600" data-i18n="sec4Label">Scholarly Output & Artifacts</span>
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navy-950 leading-tight" data-i18n="sec4Title">
+                        Research, Theses & Applied Research Utilities
+                    </h2>
+                </div>
+                <p class="text-xs uppercase tracking-widest text-navy-500 font-semibold" data-i18n="sec4Note">
+                    Documented Academic Theses & Interactive Research Applications
+                </p>
+            </div>
+
+            <!-- Academic Theses & Research Works -->
+            <div class="space-y-6 mb-14">
+                <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-gold-600 border-b border-ivory-200 pb-3" data-i18n="thesisSubhead">
+                    Academic Theses & Postgraduate Research
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Master's Thesis Track -->
+                    <div class="bg-ivory-50 border border-ivory-300 p-8 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between text-xs text-navy-600">
+                                <span class="font-bold uppercase tracking-wider text-navy-900">Master’s Research (M.Ag.)</span>
+                                <span>2024 – 2026</span>
+                            </div>
+                            <h4 class="font-serif text-2xl font-bold text-navy-950" data-i18n="thesis1Title">
+                                Graduate Research in Aqidah and Islamic Philosophy
+                            </h4>
+                            <p class="text-sm text-navy-700 leading-relaxed" data-i18n="thesis1Desc">
+                                Completed postgraduate research requirements at Universitas Islam Negeri Sjech M. Djamil Djambek Bukittinggi, focusing on analytical philosophical inquiry within Islamic theological thought.
+                            </p>
+                        </div>
+                        <div class="pt-6 mt-6 border-t border-ivory-200 flex items-center justify-between text-xs text-navy-600">
+                            <span>UIN Sjech M. Djamil Djambek Bukittinggi</span>
+                            <span class="font-semibold text-gold-600">Aqidah & Islamic Philosophy</span>
+                        </div>
+                    </div>
+
+                    <!-- Undergraduate Thesis Track -->
+                    <div class="bg-ivory-50 border border-ivory-300 p-8 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between text-xs text-navy-600">
+                                <span class="font-bold uppercase tracking-wider text-navy-900">Undergraduate Thesis (S.Ag.)</span>
+                                <span>2019 – 2023</span>
+                            </div>
+                            <h4 class="font-serif text-2xl font-bold text-navy-950" data-i18n="thesis2Title">
+                                Undergraduate Research in Hadith Sciences (Ilmu Hadis)
+                            </h4>
+                            <p class="text-sm text-navy-700 leading-relaxed" data-i18n="thesis2Desc">
+                                Completed undergraduate scholarly thesis requirements at UIN Sjech M. Djamil Djambek Bukittinggi, grounded in classical Hadith methodology and textual analysis.
+                            </p>
+                        </div>
+                        <div class="pt-6 mt-6 border-t border-ivory-200 flex items-center justify-between text-xs text-navy-600">
+                            <span>UIN Sjech M. Djamil Djambek Bukittinggi</span>
+                            <span class="font-semibold text-gold-600">Ilmu Hadis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Applied Research & Digital Humanities Applications -->
+            <div class="space-y-6">
+                <h3 class="text-xs font-bold uppercase tracking-[0.2em] text-gold-600 border-b border-ivory-200 pb-3" data-i18n="artifactsSubhead">
+                    Applied Research Tools & Digital Humanities Software (2026)
+                </h3>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Project 1: CurioVerse / Crime Story Studio -->
+                    <article class="bg-white border border-ivory-300 p-7 shadow-sm hover:shadow-editorial transition-all flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="inline-block text-[10px] font-bold uppercase tracking-widest bg-navy-900 text-gold-300 px-2.5 py-1">
+                                Documentary Research Tool
+                            </span>
+                            <h4 class="font-serif text-xl font-bold text-navy-950">
+                                CurioVerse / Crime Story Studio
+                            </h4>
+                            <p class="text-sm text-navy-700 leading-relaxed" data-i18n="proj1Desc">
+                                Web-based documentary research tool and structured script generator integrating interactive case-research parameters to systematize investigative storytelling and educational scriptwriting.
+                            </p>
+                        </div>
+                        <div class="pt-5 mt-5 border-t border-ivory-200 text-xs text-navy-500 font-medium">
+                            HTML • Tailwind CSS • JavaScript SPA
+                        </div>
+                    </article>
+
+                    <!-- Project 2: Upscaler By Thp -->
+                    <article class="bg-white border border-ivory-300 p-7 shadow-sm hover:shadow-editorial transition-all flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="inline-block text-[10px] font-bold uppercase tracking-widest bg-ivory-200 text-navy-900 px-2.5 py-1">
+                                Visual Archival & Media Utility
+                            </span>
+                            <h4 class="font-serif text-xl font-bold text-navy-950">
+                                Upscaler By Thp
+                            </h4>
+                            <p class="text-sm text-navy-700 leading-relaxed" data-i18n="proj2Desc">
+                                Interactive browser-based media upscaling application engineered with configurable magnification levels to process and scale raster images, SVG vectors, and video assets efficiently.
+                            </p>
+                        </div>
+                        <div class="pt-5 mt-5 border-t border-ivory-200 text-xs text-navy-500 font-medium">
+                            JavaScript Canvas API • Client-Side Processing
+                        </div>
+                    </article>
+
+                    <!-- Project 3: Vector Sheet Lab -->
+                    <article class="bg-white border border-ivory-300 p-7 shadow-sm hover:shadow-editorial transition-all flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <span class="inline-block text-[10px] font-bold uppercase tracking-widest bg-ivory-200 text-navy-900 px-2.5 py-1">
+                                Visual Taxonomy & Asset Utility
+                            </span>
+                            <h4 class="font-serif text-xl font-bold text-navy-950">
+                                Vector Sheet Lab
+                            </h4>
+                            <p class="text-sm text-navy-700 leading-relaxed" data-i18n="proj3Desc">
+                                Web utility enabling researchers and digital creators to consolidate standalone SVG vector assets into standardized, downloadable icon sheets for structured visual communication.
+                            </p>
+                        </div>
+                        <div class="pt-5 mt-5 border-t border-ivory-200 text-xs text-navy-500 font-medium">
+                            SVG Architecture • Single-Page Web Application
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 6. TEACHING PHILOSOPHY & PEDAGOGICAL APPROACH -->
+    <section id="teaching" class="py-24 lg:py-32 bg-ivory-100 border-b border-ivory-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 reveal">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                <!-- Left Column (4 Cols) -->
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-gold-600 font-serif italic text-lg">05.</span>
+                        <span class="h-[1px] w-10 bg-gold-500"></span>
+                        <span class="text-xs font-bold uppercase tracking-[0.2em] text-navy-600" data-i18n="sec5Label">Pedagogy</span>
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navy-950 leading-tight" data-i18n="sec5Title">
+                        Teaching Philosophy & Pedagogical Vision
+                    </h2>
+                    <p class="text-sm text-navy-600 leading-relaxed pt-2" data-i18n="sec5Subtitle">
+                        Cultivating analytical rigor, primary text literacy, and engaging conceptual translation in the university classroom.
+                    </p>
+                </div>
+
+                <!-- Right Column (8 Cols) -->
+                <div class="lg:col-span-8 space-y-8">
+                    <div class="bg-white border border-ivory-300 p-8 sm:p-10 shadow-editorial space-y-6">
+                        <p class="font-serif italic text-xl sm:text-2xl text-navy-900 leading-relaxed border-b border-ivory-200 pb-6" data-i18n="teachQuote">
+                            “To teach philosophy and theology effectively is to bridge rigorous classical scholarship with clear, structured storytelling that awakens genuine intellectual curiosity.”
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-2">
+                            <!-- Pillar A -->
+                            <div class="space-y-2.5">
+                                <div class="flex items-center gap-2.5 text-navy-950 font-bold text-sm">
+                                    <span class="w-6 h-6 rounded-full bg-navy-900 text-gold-400 text-xs flex items-center justify-center font-serif">1</span>
+                                    <h3 data-i18n="ped1Title">Analytical & Critical Inquiry</h3>
+                                </div>
+                                <p class="text-sm text-navy-700 leading-relaxed" data-i18n="ped1Desc">
+                                    Training students to deconstruct theological and philosophical arguments logically, distinguish premises from conclusions, and engage primary texts with scholarly discipline.
+                                </p>
+                            </div>
+
+                            <!-- Pillar B -->
+                            <div class="space-y-2.5">
+                                <div class="flex items-center gap-2.5 text-navy-950 font-bold text-sm">
+                                    <span class="w-6 h-6 rounded-full bg-navy-900 text-gold-400 text-xs flex items-center justify-center font-serif">2</span>
+                                    <h3 data-i18n="ped2Title">Conceptual Translation & Storytelling</h3>
+                                </div>
+                                <p class="text-sm text-navy-700 leading-relaxed" data-i18n="ped2Desc">
+                                    Drawing upon extensive experience in educational scriptwriting to present abstract metaphysical and psychological concepts through coherent, memorable narrative structures.
+                                </p>
+                            </div>
+
+                            <!-- Pillar C -->
+                            <div class="space-y-2.5">
+                                <div class="flex items-center gap-2.5 text-navy-950 font-bold text-sm">
+                                    <span class="w-6 h-6 rounded-full bg-navy-900 text-gold-400 text-xs flex items-center justify-center font-serif">3</span>
+                                    <h3 data-i18n="ped3Title">Interdisciplinary Synthesis</h3>
+                                </div>
+                                <p class="text-sm text-navy-700 leading-relaxed" data-i18n="ped3Desc">
+                                    Connecting Islamic intellectual heritage (Aqidah, Philosophy, and Hadith) with contemporary humanities, psychology, and modern ethical questions.
+                                </p>
+                            </div>
+
+                            <!-- Pillar D -->
+                            <div class="space-y-2.5">
+                                <div class="flex items-center gap-2.5 text-navy-950 font-bold text-sm">
+                                    <span class="w-6 h-6 rounded-full bg-navy-900 text-gold-400 text-xs flex items-center justify-center font-serif">4</span>
+                                    <h3 data-i18n="ped4Title">Digital-First Academic Literacy</h3>
+                                </div>
+                                <p class="text-sm text-navy-700 leading-relaxed" data-i18n="ped4Desc">
+                                    Integrating modern research workflows, digital documentation tools, and structured media literacy so students can produce and disseminate scholarship effectively.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 7. ACADEMIC & PROFESSIONAL EXPERIENCE -->
+    <section id="experience" class="py-24 lg:py-32 bg-white border-b border-ivory-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 reveal">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+                <!-- Left Column (4 Cols) -->
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-gold-600 font-serif italic text-lg">06.</span>
+                        <span class="h-[1px] w-10 bg-gold-500"></span>
+                        <span class="text-xs font-bold uppercase tracking-[0.2em] text-navy-600" data-i18n="sec6Label">Career Trajectory</span>
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navy-950 leading-tight" data-i18n="sec6Title">
+                        Academic, Research & Professional Experience
+                    </h2>
+                    <p class="text-sm text-navy-600 leading-relaxed pt-2" data-i18n="sec6Subtitle">
+                        A verified record of research tool development, educational content strategy, public service, and organizational leadership.
+                    </p>
+                </div>
+
+                <!-- Right Column: Chronological Timeline (8 Cols) -->
+                <div class="lg:col-span-8">
+                    <div class="relative border-l-2 border-ivory-300 pl-8 space-y-12 ml-2">
+
+                        <!-- Role 1 -->
+                        <div class="relative">
+                            <span class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-navy-900 border-4 border-ivory-100 ring-1 ring-gold-500"></span>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                                <h3 class="font-serif text-2xl font-bold text-navy-950">
+                                    Independent Web Developer & Digital Product Creator
+                                </h3>
+                                <span class="text-xs font-bold uppercase tracking-wider text-gold-600 bg-ivory-100 px-3 py-1 border border-ivory-200 shrink-0">
+                                    Jan 2026 – Oct 2026
+                                </span>
+                            </div>
+                            <p class="text-xs font-semibold uppercase tracking-widest text-navy-500 mb-3">Remote • Interactive Research & Media Utilities</p>
+                            <ul class="space-y-2 text-sm text-navy-700 leading-relaxed list-disc pl-4">
+                                <li data-i18n="exp1Bullet1">Developed and launched interactive Single-Page Applications (SPAs) focused on media utilities, procedural animation, and structured content creation using HTML, Tailwind CSS, and JavaScript.</li>
+                                <li data-i18n="exp1Bullet2">Engineered <strong>CurioVerse / Crime Story Studio</strong>, a web-based documentary research tool and script generator integrating interactive case-research parameters.</li>
+                                <li data-i18n="exp1Bullet3">Built <strong>Upscaler By Thp</strong> and <strong>Vector Sheet Lab</strong> to streamline browser-based media scaling and vector asset organization.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Role 2 -->
+                        <div class="relative">
+                            <span class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-navy-900 border-4 border-ivory-100 ring-1 ring-gold-500"></span>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                                <h3 class="font-serif text-2xl font-bold text-navy-950">
+                                    Content Creator & YouTube SEO Strategist
+                                </h3>
+                                <span class="text-xs font-bold uppercase tracking-wider text-gold-600 bg-ivory-100 px-3 py-1 border border-ivory-200 shrink-0">
+                                    Jan 2024 – Oct 2026
+                                </span>
+                            </div>
+                            <p class="text-xs font-semibold uppercase tracking-widest text-navy-500 mb-3">YouTube, TikTok & Digital Platforms • Educational & Philosophical Storytelling</p>
+                            <ul class="space-y-2 text-sm text-navy-700 leading-relaxed list-disc pl-4">
+                                <li data-i18n="exp2Bullet1">Developed educational video scripts, narration guidelines, and structured content calendars integrating philosophical concepts and psychological themes into accessible formats.</li>
+                                <li data-i18n="exp2Bullet2">Executed data-driven search engine optimization (SEO), metadata structuring, and audience engagement strategies to maximize organic reach and knowledge retention.</li>
+                                <li data-i18n="exp2Bullet3">Produced specialized documentary visual content, including macro videography and structured visual continuity workflows.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Role 3 -->
+                        <div class="relative">
+                            <span class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-ivory-300 border-4 border-white ring-1 ring-navy-700"></span>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                                <h3 class="font-serif text-xl font-bold text-navy-950">
+                                    Digital Marketing Specialist
+                                </h3>
+                                <span class="text-xs font-semibold uppercase tracking-wider text-navy-600 bg-ivory-100 px-3 py-1 shrink-0">
+                                    Sep 2023 – Nov 2023
+                                </span>
+                            </div>
+                            <p class="text-xs font-semibold uppercase tracking-widest text-navy-500 mb-2">Aqillah By Ria • Indonesia</p>
+                            <p class="text-sm text-navy-700 leading-relaxed" data-i18n="exp3Desc">
+                                Applied analytical communication and strategic digital outreach, achieving a documented 20% increase in monthly organizational turnover over the preceding month.
+                            </p>
+                        </div>
+
+                        <!-- Role 4: Institutional Public Service -->
+                        <div class="relative">
+                            <span class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-ivory-300 border-4 border-white ring-1 ring-navy-700"></span>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                                <h3 class="font-serif text-xl font-bold text-navy-950">
+                                    Customer Service Specialist (Public Religious Administration)
+                                </h3>
+                                <span class="text-xs font-semibold uppercase tracking-wider text-navy-600 bg-ivory-100 px-3 py-1 shrink-0">
+                                    Sep 2022 – Oct 2022
+                                </span>
+                            </div>
+                            <p class="text-xs font-semibold uppercase tracking-widest text-navy-500 mb-2">Kantor Urusan Agama (KUA) Kecamatan Baso • West Sumatra, Indonesia</p>
+                            <p class="text-sm text-navy-700 leading-relaxed" data-i18n="exp4Desc">
+                                Served the public within the Office of Religious Affairs (KUA), supporting administrative guidance, community consultation, and institutional service delivery.
+                            </p>
+                        </div>
+
+                        <!-- Role 5: Independent Entrepreneurship -->
+                        <div class="relative">
+                            <span class="absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-ivory-300 border-4 border-white ring-1 ring-navy-700"></span>
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                                <h3 class="font-serif text-xl font-bold text-navy-950">
+                                    Independent Enterprise Management (Wirausaha)
+                                </h3>
+                                <span class="text-xs font-semibold uppercase tracking-wider text-navy-600 bg-ivory-100 px-3 py-1 shrink-0">
+                                    Jun 2022 – May 2023
+                                </span>
+                            </div>
+                            <p class="text-xs font-semibold uppercase tracking-widest text-navy-500 mb-2">Bukittinggi, West Sumatra, Indonesia</p>
+                            <p class="text-sm text-navy-700 leading-relaxed" data-i18n="exp5Desc">
+                                Independently established and managed local culinary enterprises (Jun–Nov 2022 & Jan–May 2023) alongside undergraduate studies, demonstrating self-reliance, operational discipline, and community engagement.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 8. SKILLS & ACADEMIC COMPETENCIES -->
+    <section id="competencies" class="py-24 lg:py-32 bg-ivory-50 border-b border-ivory-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 reveal">
+            
+            <div class="max-w-3xl space-y-4 mb-16">
+                <div class="flex items-center gap-3">
+                    <span class="text-gold-600 font-serif italic text-lg">07.</span>
+                    <span class="h-[1px] w-10 bg-gold-500"></span>
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-navy-600" data-i18n="sec7Label">Capabilities</span>
+                </div>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navy-950 leading-tight" data-i18n="sec7Title">
+                    Research, Pedagogical & Digital Competencies
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Domain 1: Research & Theological Analysis -->
+                <div class="bg-white border border-ivory-300 p-8 shadow-sm">
+                    <div class="w-11 h-11 bg-navy-900 text-gold-400 flex items-center justify-center mb-6">
+                        <i data-lucide="search-check" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-navy-950 mb-4" data-i18n="comp1Title">
+                        Academic Research & Analysis
+                    </h3>
+                    <ul class="space-y-3 text-sm text-navy-700">
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-600 font-bold">•</span>
+                            <span data-i18n="comp1Item1">Islamic Theology (Aqidah) & Philosophical Inquiry</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-600 font-bold">•</span>
+                            <span data-i18n="comp1Item2">Hadith Authentication & Textual Criticism (Ilmu Hadis)</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-600 font-bold">•</span>
+                            <span data-i18n="comp1Item3">Analytical Reasoning & Conceptual Synthesis</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-600 font-bold">•</span>
+                            <span data-i18n="comp1Item4">Documentary Case Research & Literature Structuring</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Domain 2: Teaching & Academic Communication -->
+                <div class="bg-white border border-ivory-300 p-8 shadow-sm">
+                    <div class="w-11 h-11 bg-navy-900 text-gold-400 flex items-center justify-center mb-6">
+                        <i data-lucide="presentation" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-navy-950 mb-4" data-i18n="comp2Title">
+                        Pedagogy & Academic Communication
+                    </h3>
+                    <ul class="space-y-3 text-sm text-navy-700">
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-600 font-bold">•</span>
+                            <span data-i18n="comp2Item1">Educational Scriptwriting & Narrative Structuring</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-600 font-bold">•</span>
+                            <span data-i18n="comp2Item2">Translating Complex Philosophy for Diverse Learners</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-600 font-bold">•</span>
+                            <span data-i18n="comp2Item3">Curriculum & Content Calendar Architecture</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-600 font-bold">•</span>
+                            <span data-i18n="comp2Item4">Public Service & Institutional Stakeholder Communication</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Domain 3: Digital Humanities & Technical Skills -->
+                <div class="bg-white border border-ivory-300 p-8 shadow-sm">
+                    <div class="w-11 h-11 bg-navy-900 text-gold-400 flex items-center justify-center mb-6">
+                        <i data-lucide="code-2" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-navy-950 mb-4" data-i18n="comp3Title">
+                        Digital Humanities & Web Utilities
+                    </h3>
+                    <ul class="space-y-3 text-sm text-navy-700">
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-600 font-bold">•</span>
+                            <span data-i18n="comp3Item1">Web Application Development (HTML, Tailwind CSS, JS)</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-600 font-bold">•</span>
+                            <span data-i18n="comp3Item2">Interactive Research & Script Generator Architecture</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-600 font-bold">•</span>
+                            <span data-i18n="comp3Item3">Digital Knowledge Dissemination & Search Optimization</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="text-gold-600 font-bold">•</span>
+                            <span data-i18n="comp3Item4">Visual Media Production & Vector Asset Systems</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. CONTACT & ACADEMIC ENGAGEMENT -->
+    <section id="contact" class="py-24 lg:py-32 bg-navy-950 text-ivory-50 relative overflow-hidden">
+        <!-- Subtle Gold Accent Line -->
+        <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-navy-900 via-gold-500 to-navy-900"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 reveal">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                
+                <!-- Left Column: Invitation (6 Cols) -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="flex items-center gap-3">
+                        <span class="text-gold-400 font-serif italic text-lg">08.</span>
+                        <span class="h-[1px] w-10 bg-gold-400"></span>
+                        <span class="text-xs font-bold uppercase tracking-[0.2em] text-gold-300" data-i18n="sec8Label">Correspondence</span>
+                    </div>
+                    
+                    <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight" data-i18n="sec8Title">
+                        Open for Academic Engagements & Faculty Appointments
+                    </h2>
+                    
+                    <p class="text-base text-ivory-200/85 leading-relaxed" data-i18n="sec8Desc">
+                        Available for university lecturer positions, research collaborations, academic seminars, and scholarly discussions in Islamic Theology (Aqidah), Islamic Philosophy, Hadith Studies, and Digital Humanities.
+                    </p>
+
+                    <div class="pt-4 space-y-4">
+                        <div class="flex items-center gap-4 text-sm text-ivory-200">
+                            <div class="w-10 h-10 bg-navy-900 border border-navy-800 flex items-center justify-center text-gold-400 shrink-0">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-[11px] uppercase tracking-widest text-ivory-300/60">Academic Base</p>
+                                <p class="font-medium text-white">West Sumatra, Indonesia</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 text-sm text-ivory-200">
+                            <div class="w-10 h-10 bg-navy-900 border border-navy-800 flex items-center justify-center text-gold-400 shrink-0">
+                                <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-[11px] uppercase tracking-widest text-ivory-300/60">Alma Mater</p>
+                                <p class="font-medium text-white">UIN Sjech M. Djamil Djambek Bukittinggi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Direct Contact Cards (6 Cols) -->
+                <div class="lg:col-span-6 space-y-4">
+                    
+                    <!-- Email Card -->
+                    <div class="bg-navy-900 border border-navy-800 hover:border-gold-500/60 p-6 transition-all flex items-center justify-between gap-4">
+                        <div class="flex items-center gap-4 min-w-0">
+                            <div class="w-12 h-12 bg-navy-950 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="text-[11px] uppercase tracking-widest text-gold-300 font-semibold">Official Electronic Mail</p>
+                                <a href="mailto:tommyhp803@gmail.com" class="font-serif text-xl text-white hover:text-gold-300 transition-colors truncate block">
+                                    tommyhp803@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                        <button onclick="copyToClipboard('tommyhp803@gmail.com', this)" class="no-print shrink-0 text-xs uppercase tracking-wider bg-navy-950 hover:bg-gold-500 hover:text-navy-950 text-ivory-200 border border-navy-700 px-3.5 py-2 transition-colors">
+                            Copy
+                        </button>
+                    </div>
+
+                    <!-- Phone / Mobile Card -->
+                    <div class="bg-navy-900 border border-navy-800 hover:border-gold-500/60 p-6 transition-all flex items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-navy-950 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0">
+                                <i data-lucide="phone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-[11px] uppercase tracking-widest text-gold-300 font-semibold">Direct Telephone / WhatsApp</p>
+                                <a href="tel:+6282385597845" class="font-serif text-xl text-white hover:text-gold-300 transition-colors">
+                                    +62 823-8559-7845
+                                </a>
+                            </div>
+                        </div>
+                        <button onclick="copyToClipboard('082385597845', this)" class="no-print shrink-0 text-xs uppercase tracking-wider bg-navy-950 hover:bg-gold-500 hover:text-navy-950 text-ivory-200 border border-navy-700 px-3.5 py-2 transition-colors">
+                            Copy
+                        </button>
+                    </div>
+
+                    <!-- LinkedIn Card -->
+                    <a href="https://www.linkedin.com/in/tommyhardiputra" target="_blank" rel="noopener noreferrer" class="bg-navy-900 border border-navy-800 hover:border-gold-500/60 p-6 transition-all flex items-center justify-between gap-4 group block">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-navy-950 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-[11px] uppercase tracking-widest text-gold-300 font-semibold">Academic & Professional Network</p>
+                                <p class="font-serif text-xl text-white group-hover:text-gold-300 transition-colors">
+                                    linkedin.com/in/tommyhardiputra
+                                </p>
+                            </div>
+                        </div>
+                        <i data-lucide="external-link" class="w-4 h-4 text-ivory-300 group-hover:text-gold-400 transition-colors shrink-0"></i>
+                    </a>
+
+                    <!-- Public Scholarship & Educational Channels -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <a href="https://www.tiktok.com/@tommyhardiputra" target="_blank" rel="noopener noreferrer" class="bg-navy-900/60 border border-navy-800 hover:border-gold-500/40 px-5 py-4 flex items-center justify-between text-xs text-ivory-200 hover:text-white transition-colors">
+                            <span>TikTok: @tommyhardiputra</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-gold-400"></i>
+                        </a>
+                        <a href="https://www.instagram.com/tommyhputra" target="_blank" rel="noopener noreferrer" class="bg-navy-900/60 border border-navy-800 hover:border-gold-500/40 px-5 py-4 flex items-center justify-between text-xs text-ivory-200 hover:text-white transition-colors">
+                            <span>Instagram: @tommyhputra</span>
+                            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-gold-400"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-950 border-t border-navy-900 py-10 px-6 text-ivory-300/70 text-xs">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <span class="font-serif text-base font-bold text-white">Tommy Hardi Putra, S.Ag., M.Ag.</span>
+                <span class="text-navy-700">•</span>
+                <span>Master of Islamic Theology and Philosophy</span>
+            </div>
+            <p class="text-center sm:text-right">
+                Academic Portfolio & Lecturer Application Dossier • West Sumatra, Indonesia
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive Logic (Icons, Reveal Animations, Photo Placeholder Upload, Bilingual EN/ID Switcher) -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Scroll Reveal Observer
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Interactive Portrait Placeholder Handler (Client-side preview only, stays empty by default)
+        function handlePortraitUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.getElementById('uploadedPortraitPreview');
+                const emptyUI = document.getElementById('emptyPlaceholderUI');
+                const actionOverlay = document.getElementById('photoActionOverlay');
+                const container = document.getElementById('photoPlaceholderContainer');
+
+                img.src = e.target.result;
+                img.classList.remove('hidden');
+                emptyUI.classList.add('hidden');
+                actionOverlay.classList.remove('hidden');
+                container.classList.remove('border-dashed');
+                container.classList.add('border-solid', 'border-gold-500');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function resetPortraitPhoto() {
+            const img = document.getElementById('uploadedPortraitPreview');
+            const emptyUI = document.getElementById('emptyPlaceholderUI');
+            const actionOverlay = document.getElementById('photoActionOverlay');
+            const container = document.getElementById('photoPlaceholderContainer');
+            const input = document.getElementById('portraitFileInput');
+
+            input.value = '';
+            img.src = '';
+            img.classList.add('hidden');
+            emptyUI.classList.remove('hidden');
+            actionOverlay.classList.add('hidden');
+            container.classList.add('border-dashed');
+            container.classList.remove('border-solid', 'border-gold-500');
+        }
+
+        // Copy to Clipboard Helper
+        function copyToClipboard(text, btnElement) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = btnElement.innerText;
+                btnElement.innerText = 'Copied';
+                btnElement.classList.add('bg-gold-500', 'text-navy-950');
+                setTimeout(() => {
+                    btnElement.innerText = originalText;
+                    btnElement.classList.remove('bg-gold-500', 'text-navy-950');
+                }, 1800);
+            });
+        }
+
+        // Bilingual Support (English / Bahasa Indonesia) for Indonesian & International University Committees
+        let currentLang = 'en';
+        const translations = {
+            id: {
+                printBtn: "Cetak Portofolio",
+                navProfile: "Profil",
+                navEducation: "Pendidikan",
+                navInterests: "Minat Riset",
+                navPublications: "Riset & Karya",
+                navTeaching: "Filosofi Mengajar",
+                navExperience: "Pengalaman",
+                navSkills: "Kompetensi",
+                navContact: "Kontak Akademik",
+                heroBadge: "Magister Teologi dan Filsafat Islam (M.Ag.)",
+                heroSalutation: "Portofolio Akademik & Lamaran Dosen",
+                heroRole: "Akademisi Aqidah & Filsafat Islam • Peneliti • Edukator Humaniora Digital",
+                heroTagline: "“Berdedikasi bagi pengembangan penelitian, pendidikan, dan pemikiran Islam.”",
+                pillar1Title: "Kualifikasi Akademik",
+                pillar1Desc: "Magister Aqidah dan Filsafat Islam (M.Ag.)",
+                pillar2Title: "Misi Utama",
+                pillar2Desc: "Memajukan Riset, Pendidikan & Pemikiran Islam",
+                pillar3Title: "Ketersediaan",
+                pillar3Desc: "Terbuka untuk Kolaborasi Akademik & Pengajaran",
+                heroBtnExplore: "Telusuri Profil Akademik",
+                heroBtnContact: "Hubungi & Jadwalkan",
+                photoPlaceholderTitle: "Placeholder Foto Resmi Dosen",
+                photoPlaceholderDesc: "Rasio aspek yang disarankan 3:4 (Pakaian Formal Akademik). Klik di bawah untuk memasukkan foto Anda secara langsung.",
+                photoUploadBtn: "Masukkan Foto Profil",
+                sec1Label: "Identitas Akademik",
+                sec1Title: "Profil Profesional & Filosofi Pendidikan",
+                sec1Subtitle: "Menyintesiskan kajian teologi dan filsafat Islam klasik dengan metodologi analitis kontemporer serta diseminasi digital.",
+                profilePara1: "Saya adalah peneliti akademik dan lulusan pascasarjana dengan gelar Magister Aqidah dan Filsafat Islam (M.Ag.) dari Universitas Islam Negeri Sjech M. Djamil Djambek Bukittinggi, yang dibangun di atas fondasi sarjana di bidang Ilmu Hadis (S.Ag.). Karya intelektual saya berfokus pada kajian analitis yang mendalam dalam teologi Islam, pemikiran filsafat, dan tradisi tekstual klasik.",
+                profilePara2: "Di luar penelitian akademik konvensional, saya memiliki keahlian dalam menjembatani konsep-konsep filsafat dan psikologi yang kompleks ke dalam narasi edukatif yang terstruktur dan mudah dipahami. Melalui penulisan naskah berbasis riset, arsitektur konten digital, serta pengembangan utilitas riset berbasis web, saya berupaya menerjemahkan diskursus intelektual ke dalam format yang relevan bagi pembelajar masa kini tanpa mengurangi kedalaman konseptualnya.",
+                eduPhilTitle: "Filosofi Pendidikan Inti",
+                eduPhilDesc: "Pendidikan dalam bidang Teologi dan Filsafat Islam harus menumbuhkan nalar kritis, integritas intelektual, dan kedalaman reflektif. Berlandaskan komitmen filosofis terhadap kejelasan analitis, saya memandang pendidikan tinggi bukan sekadar transmisi doktrin, melainkan proses dialogis aktif—membekali mahasiswa untuk mengkaji warisan intelektual Islam secara kritis dan mengartikulasikan relevansinya terhadap persoalan etika, psikologi, dan sosial modern.",
+                attr1Label: "Fondasi Keilmuan",
+                attr1Val: "Aqidah, Filsafat Islam & Ilmu Hadis",
+                attr2Label: "Pendekatan Metodologis",
+                attr2Val: "Filsafat Analitis & Diseminasi Pengetahuan Digital",
+                sec2Label: "Kredensial",
+                sec2Title: "Riwayat Pendidikan",
+                sec2Subtitle: "Pendidikan tinggi formal dalam ilmu-ilmu keislaman, teologi, dan kajian filsafat.",
+                edu1Level: "Pendidikan Pascasarjana (Magister)",
+                edu1Desc: "Spesialisasi tingkat lanjut dalam diskursus teologi Islam (Aqidah), filsafat Islam klasik dan kontemporer, kajian metafisika, serta penalaran analitis.",
+                edu2Level: "Pendidikan Sarjana (Strata 1)",
+                edu2Desc: "Fondasi komprehensif dalam kritik teks Islam klasik, metodologi autentikasi hadis (Ulumul Hadis), analisis sumber primer berbahasa Arab, dan ilmu-ilmu dasar keislaman.",
+                sec3Label: "Bidang Kajian",
+                sec3Title: "Minat Penelitian & Bidang Keilmuan",
+                sec3Subtitle: "Arah penelitian interdisipliner yang berakar pada tradisi filsafat Islam, kajian teks klasik, dan komunikasi analitis modern.",
+                res1Title: "Teologi Islam (Aqidah) & Ilmu Kalam Klasik",
+                res1Desc: "Kajian mengenai doktrin teologis fundamental, epistemologi dalam pemikiran Islam, serta artikulasi sistematis Aqidah dalam merespons tantangan intelektual historis maupun kontemporer.",
+                res2Title: "Filsafat Islam & Psikologi Filosofis",
+                res2Desc: "Eksplorasi analitis terhadap konsep filsafat Islam, etika, dan psikologi manusia—menelaah bagaimana penalaran filosofis menerangi kognisi, perilaku, dan makna eksistensial.",
+                res3Title: "Studi Hadis & Metodologi Tekstual",
+                res3Desc: "Kajian kritis terhadap tradisi kenabian (Ilmu Hadis), verifikasi historiografis, serta kerangka hermeneutis yang menghubungkan teks keagamaan klasik dengan diskursus kontemporer.",
+                res4Title: "Humaniora Digital & Perangkat Riset Terapan",
+                res4Desc: "Pengembangan utilitas riset berbasis peramban, kerangka narasi terstruktur, dan media digital edukatif yang menjembatani kesarjanaan akademik dengan literasi publik.",
+                sec4Label: "Karya Ilmiah & Artefak",
+                sec4Title: "Penelitian, Tesis & Utilitas Riset Terapan",
+                sec4Note: "Tesis Akademik Terdokumentasi & Aplikasi Riset Interaktif",
+                thesisSubhead: "Tesis Akademik & Penelitian Pascasarjana",
+                thesis1Title: "Penelitian Pascasarjana Bidang Aqidah dan Filsafat Islam",
+                thesis1Desc: "Menyelesaikan persyaratan penelitian magister di Universitas Islam Negeri Sjech M. Djamil Djambek Bukittinggi dengan fokus pada kajian filsafat analitis dalam pemikiran teologi Islam.",
+                thesis2Title: "Skripsi Sarjana Bidang Ilmu Hadis",
+                thesis2Desc: "Menyelesaikan penelitian skripsi sarjana di UIN Sjech M. Djamil Djambek Bukittinggi yang berlandaskan metodologi Ilmu Hadis klasik dan analisis tekstual.",
+                artifactsSubhead: "Perangkat Riset Terapan & Perangkat Lunak Humaniora Digital (2026)",
+                proj1Desc: "Alat riset dokumenter dan generator naskah berbasis web yang mengintegrasikan parameter riset kasus interaktif untuk menyistematisasikan penulisan naskah edukatif.",
+                proj2Desc: "Aplikasi peningkatan resolusi media interaktif berbasis browser yang dirancang dengan tingkat perbesaran terkonfigurasi untuk memproses gambar raster, vektor SVG, dan video.",
+                proj3Desc: "Utilitas web yang memungkinkan peneliti dan kreator menggabungkan aset vektor SVG mandiri menjadi lembar ikon terstandar untuk komunikasi visual terstruktur.",
+                sec5Label: "Pedagogi",
+                sec5Title: "Filosofi Mengajar & Visi Pedagogis",
+                sec5Subtitle: "Menumbuhkan ketajaman analitis, literasi teks primer, dan penerjemahan konseptual yang memikat di ruang kuliah.",
+                teachQuote: "“Mengajar filsafat dan teologi secara efektif berarti menjembatani kesarjanaan klasik yang ketat dengan penyampaian naratif yang jernih dan terstruktur guna membangkitkan rasa ingin tahu intelektual.”",
+                ped1Title: "Kajian Analitis & Kritis",
+                ped1Desc: "Melatih mahasiswa membedah argumen teologis dan filosofis secara logis, membedakan premis dari kesimpulan, serta mengkaji teks primer dengan disiplin ilmiah.",
+                ped2Title: "Penerjemahan Konseptual & Storytelling",
+                ped2Desc: "Memanfaatkan pengalaman luas dalam penulisan naskah edukatif untuk menyajikan konsep metafisika dan psikologi yang abstrak melalui struktur narasi yang koheren.",
+                ped3Title: "Sintesis Interdisipliner",
+                ped3Desc: "Menghubungkan warisan intelektual Islam (Aqidah, Filsafat, dan Hadis) dengan humaniora kontemporer, psikologi, serta persoalan etika modern.",
+                ped4Title: "Literasi Akademik Berbasis Digital",
+                ped4Desc: "Mengintegrasikan alur kerja riset modern, perangkat dokumentasi digital, dan literasi media agar mahasiswa mampu memproduksi serta mendiseminasikan karya ilmiah secara efektif.",
+                sec6Label: "Rekam Jejak",
+                sec6Title: "Pengalaman Akademik, Riset & Profesional",
+                sec6Subtitle: "Rekam jejak terverifikasi dalam pengembangan alat riset, strategi konten edukatif, pelayanan publik, dan kepemimpinan organisasi.",
+                exp1Bullet1: "Mengembangkan dan meluncurkan aplikasi web halaman tunggal (SPA) interaktif yang berfokus pada utilitas media, animasi prosedural, dan pembuatan konten terstruktur.",
+                exp1Bullet2: "Merancang CurioVerse / Crime Story Studio, alat riset dokumenter dan generator skrip berbasis web dengan parameter riset kasus interaktif.",
+                exp1Bullet3: "Membangun Upscaler By Thp dan Vector Sheet Lab untuk mengefisienkan pemrosesan media dan pengorganisasian aset vektor berbasis browser.",
+                exp2Bullet1: "Mengembangkan naskah video edukatif, pedoman narasi, dan kalender konten terstruktur yang mengintegrasikan konsep filsafat dan tema psikologi.",
+                exp2Bullet2: "Menerapkan optimasi mesin pencari (SEO) berbasis data, struktur metadata, dan strategi keterlibatan audiens untuk memaksimalkan jangkauan edukatif.",
+                exp2Bullet3: "Memproduksi konten visual dokumenter khusus, termasuk videografi makro dan tata kelola kontinuitas visual.",
+                exp3Desc: "Menerapkan komunikasi analitis dan strategi pemasaran digital yang berhasil meningkatkan omzet bulanan organisasi sebesar 20% dibandingkan bulan sebelumnya.",
+                exp4Desc: "Melayani masyarakat di Kantor Urusan Agama (KUA) Kecamatan Baso, mendukung administrasi pelayanan publik, konsultasi masyarakat, dan tata kelola kelembagaan.",
+                exp5Desc: "Merintis dan mengelola usaha mandiri di Bukittinggi (Jun–Nov 2022 & Jan–Mei 2023) di sela studi sarjana, menunjukkan kemandirian, disiplin operasional, dan keterlibatan masyarakat.",
+                sec7Label: "Kapabilitas",
+                sec7Title: "Kompetensi Penelitian, Pengajaran & Akademik",
+                comp1Title: "Penelitian Akademik & Analisis",
+                comp1Item1: "Teologi Islam (Aqidah) & Kajian Filsafat",
+                comp1Item2: "Autentikasi Hadis & Kritik Teks (Ilmu Hadis)",
+                comp1Item3: "Penalaran Analitis & Sintesis Konseptual",
+                comp1Item4: "Riset Kasus Dokumenter & Strukturisasi Literatur",
+                comp2Title: "Pedagogi & Komunikasi Akademik",
+                comp2Item1: "Penulisan Naskah Edukatif & Strukturisasi Narasi",
+                comp2Item2: "Menyederhanakan Konsep Filsafat Kompleks bagi Pembelajar",
+                comp2Item3: "Arsitektur Kurikulum & Kalender Materi",
+                comp2Item4: "Pelayanan Publik & Komunikasi Kelembagaan",
+                comp3Title: "Humaniora Digital & Utilitas Web",
+                comp3Item1: "Pengembangan Aplikasi Web (HTML, Tailwind CSS, JS)",
+                comp3Item2: "Arsitektur Alat Riset Interaktif & Generator Naskah",
+                comp3Item3: "Diseminasi Pengetahuan Digital & Optimasi Pencarian",
+                comp3Item4: "Produksi Media Visual & Sistem Aset Vektor",
+                sec8Label: "Korespondensi",
+                sec8Title: "Terbuka untuk Keterlibatan Akademik & Pengangkatan Dosen",
+                sec8Desc: "Tersedia untuk posisi dosen perguruan tinggi, kolaborasi penelitian, seminar akademik, dan diskusi ilmiah di bidang Teologi Islam (Aqidah), Filsafat Islam, Ilmu Hadis, dan Humaniora Digital."
+            }
+        };
+
+        // Store default English strings
+        const defaultEnStrings = {};
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            defaultEnStrings[el.getAttribute('data-i18n')] = el.innerHTML;
+        });
+
+        function toggleLanguage() {
+            const langLabel = document.getElementById('langLabel');
+            if (currentLang === 'en') {
+                currentLang = 'id';
+                langLabel.innerText = 'English (International)';
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (translations.id[key]) {
+                        el.innerHTML = translations.id[key];
+                    }
+                });
+            } else {
+                currentLang = 'en';
+                langLabel.innerText = 'Bahasa Indonesia';
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (defaultEnStrings[key]) {
+                        el.innerHTML = defaultEnStrings[key];
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>
